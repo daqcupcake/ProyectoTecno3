@@ -18,23 +18,24 @@ import tkinter as tk
 from PaginaDesig import crearPaginaDesig
 from PaginaPitagoras import crearPaginaPitagoras
 from PaginaLeySenos import crearLSen
+from PaginaLeyCoseno import crearLCos
+from AcercaDe import creaVentana2
 
 #VARIABLES GLOBALES
 colorFondo="#FFFFFF"
-colorTexto="#000000"
-colorBotones="#25C7CA"
+colorTexto="#003C71"
+colorBotones="#64D1AA"
 fuente=("Arial",15)
 
 
 
+
     
 
     
-def LeyCos():
-    print("Boton Ley de Cosenos presionado")
+
     
-def AcercaDe():
-    print("Boton Acerca de presionado")
+
 
 #TKINTER
 
@@ -49,23 +50,26 @@ class Principal(tk.Tk):
 
 
         #   BOTONES Y LABELS
-        self.titulo=tk.Label(self,text="Aqui va el título",font=fuente)
-        self.titulo.place(x=350,y=50)
-        self.desc=tk.Label(self,text="Aqui va la descripción del programa",font=fuente)
-        self.desc.place(x=300,y=100)
+        self.titulo=tk.Label(self,text="GeomeTRIX Máster",font=('Arial 24 bold'),justify="center",fg="#006DCC")
+        self.titulo.place(x=260,y=20)
+        self.titulo2=tk.Label(self,text="Domina la geometría de triángulos en un toque.",font=fuente,fg=colorTexto)
+        self.titulo2.place(x=180,y=80)
+        self.desc=tk.Message(self,text="Reciban la bienvenida a la app donde aprenderás sobre Desigualdad Triangular, el teorema de Pitágoras, Ley de Senos y Ley de Cosenos. En ella, encontrarás práctica ilimitada sobre los diferentes temas y recibirás retroalimentación a medida que respondes cada ejercicio. En cada app, a parte de practicar los diferentes procedimientos, podrás visualizar la gráfica de cada triángulo.",font=fuente,width=755)
+        self.desc.place(x=20,y=125)
+        self.titulo3=tk.Label(self,text="Para acceder, oprime el tema que te gustaría practicar:",font=fuente,fg=colorTexto)
+        self.titulo3.place(x=25,y=260)
         
         
-        self.btnDes=tk.Button(self,text="Desigualdad triangular",bg=colorBotones,command=self.Desigualdad,font=fuente)
-        self.btnDes.place(x=200,y=150)
-        self.btnPit=tk.Button(self,text="Pitágoras",bg=colorBotones,command=self.Pitagoras,font=fuente)
-        self.btnPit.place(x=400,y=150)
-        self.btnLSen=tk.Button(self,text="Ley de Senos",bg=colorBotones,command=self.LeySen,font=fuente)
-        self.btnLSen.place(x=200,y=200)
-        self.btnLCos=tk.Button(self,text="ley de Cosenos",bg=colorBotones,command=LeyCos,font=fuente)
-        self.btnLCos.place(x=400,y=200)
-        self.btnAcd=tk.Button(self,text="Acerca de",bg=colorBotones,command=AcercaDe,font=fuente)
-        self.btnAcd.place(x=700,y=550)
-        
+        self.btnDes=tk.Button(self,text="Desigualdad triangular",bg=colorBotones,command=self.Desigualdad,font=('Arial 18'),width=20)
+        self.btnDes.place(x=50,y=320)
+        self.btnPit=tk.Button(self,text="Teorema de Pitágoras",bg=colorBotones,command=self.Pitagoras,font=('Arial 18'),width=20)
+        self.btnPit.place(x=400,y=320)
+        self.btnLSen=tk.Button(self,text="Ley de Senos",bg=colorBotones,command=self.LeySen,font=('Arial 18'),width=20)
+        self.btnLSen.place(x=50,y=410)
+        self.btnLCos=tk.Button(self,text="Ley de Cosenos",bg=colorBotones,command=self.LeyCos,font=('Arial 18'),width=20)
+        self.btnLCos.place(x=400,y=410)
+        self.btnAcd=tk.Button(self,text="Acerca de",bg="#00B37A",fg="white",command=self.AcercaDe,font=fuente)
+        self.btnAcd.place(x=675,y=550)
         #FUNCIONES
 
     def Desigualdad(self):
@@ -79,6 +83,14 @@ class Principal(tk.Tk):
     def LeySen(self):
         self.withdraw()
         crearLSen(self)
+        
+    def LeyCos(self):
+        self.withdraw()
+        crearLCos(self)
+        
+    def AcercaDe(self):
+        self.withdraw()
+        creaVentana2(self)
         
 
 

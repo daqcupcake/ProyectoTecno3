@@ -15,21 +15,21 @@ def crearLSen(principal):
         accion_seleccionada=ventLSen.listaccion.get()
         actualizar_medidas()
         if accion_seleccionada=="Calcular la longitud de un lado":
-            ventLSen.lblangB.place(x=500,y=180)
-            ventLSen.lblrespladob.place(x=500,y=220)
-            ventLSen.lblR.place(x=500,y=260)
-            ventLSen.txtrespladob.place(x=550,y=260)
-            ventLSen.btnverificarlado.place(x=500,y=300)
+            ventLSen.lblangB.place(x=20,y=350)
+            ventLSen.lblrespladob.place(x=20,y=380)
+            ventLSen.lblR.place(x=20,y=410)
+            ventLSen.txtrespladob.place(x=70,y=410)
+            ventLSen.btnverificarlado.place(x=20,y=440)
             ventLSen.lblladob.place_forget()
             ventLSen.lblrespangB.place_forget()
             ventLSen.txtrespangB.place_forget()
             ventLSen.btnverificarang.place_forget()
         elif accion_seleccionada=="Calcular la medida de un angulo":
-            ventLSen.lblladob.place(x=500,y=180)
-            ventLSen.lblrespangB.place(x=500,y=220)
-            ventLSen.lblR.place(x=500,y=260)
-            ventLSen.txtrespangB.place(x=550,y=260)
-            ventLSen.btnverificarang.place(x=500,y=300)
+            ventLSen.lblladob.place(x=20,y=350)
+            ventLSen.lblrespangB.place(x=20,y=380)
+            ventLSen.lblR.place(x=20,y=410)
+            ventLSen.txtrespangB.place(x=70,y=410)
+            ventLSen.btnverificarang.place(x=20,y=440)
             ventLSen.lblangB.place_forget()
             ventLSen.lblrespladob.place_forget()
             ventLSen.txtrespladob.place_forget()
@@ -60,7 +60,7 @@ def crearLSen(principal):
         lados = [ladoa,ladob,ladoc]
         lados.sort(reverse=True)
         ventLSen.grafica=FigureCanvasTkAgg(graficoTri(lados[0], lados[1], lados[2]),ventLSen)
-        ventLSen.grafica.get_tk_widget().place(x=40,y=200)
+        ventLSen.grafica.get_tk_widget().place(x=450,y=230)
         
     def verificar_respuestaang():
         global anguloB
@@ -110,13 +110,13 @@ def crearLSen(principal):
     #Ventana
     #ventLSen = Tk()
     ventLSen=Toplevel(principal)
-    ventLSen.geometry("800x600")
+    ventLSen.geometry("1200x800")
     ventLSen.title("Ley de Senos")
     
     
     #Variables Globales
     accion = ["Calcular la longitud de un lado","Calcular la medida de un angulo"]
-    fuentep=("Arial",17,"bold")
+    fuentep=("Arial",20,"bold")
     fuente=("Arial",15)
     ladoa,ladob,ladoc,anguloA,anguloB,anguloC = generar_medidas()
     lados = [ladoa,ladob,ladoc]
@@ -124,9 +124,8 @@ def crearLSen(principal):
     colorBotones="#25C7CA"
     
     #Crear elementos
-    ventLSen.lblprincipal= Label(ventLSen,text="Ley de Senos",font=fuentep)
-    ventLSen.lblinfo= Label(ventLSen,text="En esta ventana podras elegir entre calcular la medida de un lado o angulo utilizando la ley de senos.",font=fuente)
-    ventLSen.lblnota= Label(ventLSen,text="Nota: las medidas proporcionadas de los angulos estan en grados.",font=fuente)
+    ventLSen.lblprincipal= Label(ventLSen,text="Ley de Senos",font=fuentep,fg="#006DCC")
+    ventLSen.lblinfo= Message(ventLSen,text="A través de esta ventana, podrás practicar determinar la medida de un lado de un triángulo o la medida de un ángulo en grados mediante la Ley de Senos. Para ello, debes seleccionar si deseas calcular la medida de un lado o un ángulo. Una vez que lo seleccionas, utilizando los valores que se brindan aleatoriamente,  puedes determinar cada medida. Además, una vez que lo verifiques podrás ver cómo se ve gráficamente dicho triángulo.\nNota: En las respuestas que tengan expansión decimal infinita periódica utiliza únicamente dos decimales sin redondear.",font=fuente,width=1100)
     ventLSen.lblaccion= Label(ventLSen, text="Elija la accion que desea realizar:",font=fuente)
     ventLSen.listaccion= Combobox(ventLSen, values=accion, width=26,font=fuente)  
     ventLSen.grafica=FigureCanvasTkAgg(graficoTri(lados[0], lados[1], lados[2]),ventLSen)
@@ -138,25 +137,24 @@ def crearLSen(principal):
     #Colocar elementos
     ventLSen.lblprincipal.place(relx=0.5, y=15, anchor="center")
     ventLSen.lblinfo.place(x=20,y=30)
-    ventLSen.lblnota.place(x=20,y=60)
-    ventLSen.lblaccion.place(x=20,y=100)
-    ventLSen.listaccion.place(x=20,y=140)
-    ventLSen.grafica.get_tk_widget().place(x=0,y=200)
+    ventLSen.lblaccion.place(x=20,y=230)
+    ventLSen.listaccion.place(x=20,y=260)
+    ventLSen.grafica.get_tk_widget().place(x=450,y=230)
     
     
     #elementos que aparecen siempre
     ventLSen.lblladoa= Label(ventLSen,text=f"La medida del lado A es: {ladoa} u.l",font=fuente)
-    ventLSen.lblladoa.place(x=500,y=100)
+    ventLSen.lblladoa.place(x=20,y=290)
     ventLSen.lblangA= Label(ventLSen,text=f"La medida del angulo A es: {anguloA:.4f} grados",font=fuente)
-    ventLSen.lblangA.place(x=500,y=140)
+    ventLSen.lblangA.place(x=20,y=320)
     ventLSen.lblR= Label(ventLSen,text="R/",font=fuente)
     ventLSen.btnverificarlado= Button(ventLSen,text="Verificar",font=fuente,command=verificar_respuestalado)
     ventLSen.btnverificarang= Button(ventLSen,text="Verificar",font=fuente,command=verificar_respuestaang)
     ventLSen.btnnuevo=Button(ventLSen,text="Nuevo",font=fuente,command=actualizar_medidas)
-    ventLSen.btnnuevo.place(x=600,y=300)
+    ventLSen.btnnuevo.place(x=120,y=440)
     
-    ventLSen.btnVol=Button(ventLSen,text="Volver",bg=colorBotones,command=lambda: Volver(ventLSen, principal))
-    ventLSen.btnVol.place(x=700,y=550)
+    ventLSen.btnVol=Button(ventLSen,text="Volver",bg="#00B37A",fg="white",command=lambda: Volver(ventLSen, principal),font=fuente)
+    ventLSen.btnVol.place(x=1100,y=750)
     
     ventLSen.protocol("WM_DELETE_WINDOW",lambda: Volver(ventLSen, principal)) #Para que se cierre como Dios manda
     

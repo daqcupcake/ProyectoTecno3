@@ -22,7 +22,7 @@ from tkinter.ttk import Combobox
 #VARIABLES GLOBALES
 colorFondo="#FFFFFF"
 colorTexto="#000000"
-colorBotones="#25C7CA"
+colorBotones="#64D1AA"
 fuente=("Arial",15)
 
 
@@ -40,7 +40,7 @@ def crearPaginaPitagoras(principal):
     
     def Aleatorio():
         
-        """ La funcion genera valores aleatorios según el caso que
+        """ La funcion genera valores aleatorios segun el caso que
         
             se presente"""
             
@@ -74,7 +74,7 @@ def crearPaginaPitagoras(principal):
         
         """La funcion que es activada por el boton Revisar
         
-            primero verifica la respuesta de usuario según lo ingresado 
+            primero verifica la respuesta de usuario segun lo ingresado 
             
             y luego grafica de acuerdo con los resultados previamente calculados"""
             
@@ -85,19 +85,20 @@ def crearPaginaPitagoras(principal):
         if selec=="Calcular Hipotenusa":
             if ventPit.resHip.get():
                 if hip-margenError < float(ventPit.resHip.get()) and float(ventPit.resHip.get()) < hip+margenError:
-                    ventPit.verif.config(text=f"Correcto la respuesta es {hip}")
+                    ventPit.verif.config(text=f"Correcto la respuesta es {hip:.2f}")
                 else:
-                    ventPit.verif.config(text=f"Incorrecto la respuesta correcta es {hip}")
+                    ventPit.verif.config(text=f"Incorrecto la respuesta correcta es {hip:.4f}")
+            print("AA")        
         
         elif selec=="Calcular Cateto":
             if ventPit.resCat.get():
                 if cat2-margenError < float(ventPit.resCat.get()) and float(ventPit.resCat.get()) < cat2+margenError:
-                    ventPit.verif.config(text=f"Correcto la respuesta es {cat2}")
+                    ventPit.verif.config(text=f"Correcto la respuesta es {cat2:.2f}")
                 else:
-                    ventPit.verif.config(text=f"Incorrecto la respuesta correcta es {cat2}")
+                    ventPit.verif.config(text=f"Incorrecto la respuesta correcta es {cat2:.4f}")
                     
         ventPit.grafica=FigureCanvasTkAgg(graficar(),ventPit)
-        ventPit.grafica.get_tk_widget().place(x=300,y=200)
+        ventPit.grafica.get_tk_widget().place(x=400,y=310)
                 
         
     def graficar():
@@ -133,17 +134,17 @@ def crearPaginaPitagoras(principal):
         if selec=="Calcular Hipotenusa":
             
             ventPit.laValHip.place_forget()
-            ventPit.resHip.place(x=150,y=300)
+            ventPit.resHip.place(x=170,y=360)
             
-            ventPit.laValCat2.place(x=150,y=250)
+            ventPit.laValCat2.place(x=170,y=410)
             ventPit.resCat.place_forget()
             
         elif selec=="Calcular Cateto":
             
             ventPit.laValCat2.place_forget()
-            ventPit.resCat.place(x=150,y=250)
+            ventPit.resCat.place(x=170,y=360)
             
-            ventPit.laValHip.place(x=150,y=300)
+            ventPit.laValHip.place(x=170,y=410)
             ventPit.resHip.place_forget()
             
         Aleatorio()
@@ -157,51 +158,50 @@ def crearPaginaPitagoras(principal):
     #TKINTER
     
     #   PRINCIPAL
-    ventPit=tk.Tk()
-    #ventPit=tk.Toplevel(principal)
+    #ventPit=tk.Tk()
+    ventPit=tk.Toplevel(principal)
     ventPit.title("Teorema de Pitagoras")
-    ventPit.geometry("800x600")
+    ventPit.geometry("1200x800")
     
     #   BOTONES Y LABELS
-    ventPit.titulo=tk.Label(ventPit,text="Aqui va el titulo")
-    ventPit.titulo.place(x=350,y=50)
-    ventPit.desc=tk.Label(ventPit,text="Aqui va la descripcion del programa")
-    ventPit.desc.place(x=300,y=100)
+    ventPit.titulo=tk.Label(ventPit,text="Teorema de Pitagoras",font=('Arial 20 bold'),justify="center",fg="#006DCC")
+    ventPit.titulo.place(x=400,y=20)
+    ventPit.desc=tk.Message(ventPit,text="A traves de esta ventana, podras practicar determinar la medida de un lado mediante el teorema de Pitagoras. Para ello, debes seleccionar si deseas calcular un cateto o una hipotenusa. Una vez que lo seleccionas, utilizando los valores que brinda aleatoriamente puedes determinar cada medida. Ademas, una vez que lo verifiques podras ver como se ve graficamente dicho triangulo.\nNota: En las respuestas que tengan expansion decimal infinita periodica utiliza unicamente dos decimales sin redondear.",font=fuente,width=1100)
+    ventPit.desc.place(x=50,y=70)
     
-    ventPit.combo=Combobox(ventPit,values=opciones,width=20) 
-    ventPit.combo.place(x=50,y=150)
+    ventPit.combo=Combobox(ventPit,values=opciones,width=20,font=fuente) 
+    ventPit.combo.place(x=50,y=260)
     ventPit.combo.bind("<<ComboboxSelected>>",visibilidad)
     
-    ventPit.laCat1=tk.Label(ventPit,text="Cateto 1: ")
-    ventPit.laCat1.place(x=50,y=200)
-    ventPit.laCat2=tk.Label(ventPit,text="Cateto 2: ")
-    ventPit.laCat2.place(x=50,y=250)
-    ventPit.laHip=tk.Label(ventPit,text="Hipotenusa: ")
-    ventPit.laHip.place(x=50,y=300)
+    ventPit.laCat1=tk.Label(ventPit,text="Cateto 1: ",font=fuente)
+    ventPit.laCat1.place(x=50,y=310)
+    ventPit.laCat2=tk.Label(ventPit,text="Cateto 2: ",font=fuente)
+    ventPit.laCat2.place(x=50,y=360)
+    ventPit.laHip=tk.Label(ventPit,text="Hipotenusa: ",font=fuente)
+    ventPit.laHip.place(x=50,y=410)
     
-    ventPit.laValCat1=tk.Label(ventPit,text=cat1)
-    ventPit.laValCat1.place(x=150,y=200)
-    ventPit.laValCat2=tk.Label(ventPit,text=cat2)
-    ventPit.laValHip=tk.Label(ventPit,text=hip)
+    ventPit.laValCat1=tk.Label(ventPit,text=cat1,font=fuente)
+    ventPit.laValCat1.place(x=170,y=310)
+    ventPit.laValCat2=tk.Label(ventPit,text=cat2,font=fuente)
+    ventPit.laValHip=tk.Label(ventPit,text=hip,font=fuente)
     
-    ventPit.resHip=tk.Entry(ventPit,width=10)
-    ventPit.resCat=tk.Entry(ventPit,width=10)
+    ventPit.resHip=tk.Entry(ventPit,width=10,font=fuente)
+    ventPit.resCat=tk.Entry(ventPit,width=10,font=fuente)
     
-    ventPit.btnRand=tk.Button(ventPit,text="Aleatorio",command=Aleatorio)
-    ventPit.btnRand.place(x=50,y=350)
+    ventPit.btnRand=tk.Button(ventPit,text="Aleatorio",command=Aleatorio,font=fuente,bg=colorBotones)
+    ventPit.btnRand.place(x=50,y=460)
     
-    ventPit.btnRand=tk.Button(ventPit,text="Revisar",command=Revisar)
-    ventPit.btnRand.place(x=150,y=350)
+    ventPit.btnRand=tk.Button(ventPit,text="Revisar",command=Revisar,font=fuente,bg=colorBotones)
+    ventPit.btnRand.place(x=150,y=460)
     
-    ventPit.verif=tk.Label(text="")
-    ventPit.verif.place(x=300,y=150)
+    ventPit.verif=tk.Label(ventPit,text="",font=fuente)
+    ventPit.verif.place(x=400,y=260)
     
+    ventPit.btnVol=tk.Button(ventPit,text="Volver",bg="#00B37A",fg="white",command=lambda: Volver(ventPit, principal),font=fuente)
+    ventPit.btnVol.place(x=1100,y=750)
     
-    ventPit.btnVol=tk.Button(ventPit,text="Volver",bg=colorBotones,command=lambda: Volver(ventPit, principal))
-    ventPit.btnVol.place(x=700,y=550)
     
     ventPit.protocol("WM_DELETE_WINDOW",lambda: Volver(ventPit, principal)) #Para que se cierre como Dios manda
-    
     
     
     
